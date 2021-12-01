@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import datetime
 import os
 
 page_url = "https://lionskn-adventskalender.de/gewinnnummern/"
@@ -33,11 +34,12 @@ def main():
         if element["winner"] in own_numbers:
             win_elements.append(element)
 
+    x = datetime.datetime.now()
     if len(win_elements) == 0:
-        print("No Winners found ... Try again tommorrow ...")
+        print(x.strftime("[ %d-%m-%Y %H:%M:%S ]") + "No Winners found ... Try again tommorrow ...")
     else:
         for win_element in win_elements:
-            print(str("'" + win_element["winner"]) + "' won '" + str(win_element["win"]) + "' from '" + str(
+            print(str(x.strftime("[ %d-%m-%Y %H:%M:%S ]") + "'" + win_element["winner"]) + "' won '" + str(win_element["win"]) + "' from '" + str(
                 win_element["sponsor"] + "'"))
 
 
