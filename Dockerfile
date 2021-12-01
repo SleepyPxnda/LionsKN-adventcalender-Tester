@@ -1,12 +1,23 @@
 FROM python:3
 
-WORKDIR /usr/src/app
+RUN apt-get -y update && apt-get -y upgrade
 
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
+RUN apt-get install -y cron
 
-COPY . .
+RUN touch /var/log/cron.log
 
-ENV NUMBERS "4693,4677,8607"
+RUN mkdir /code
 
-CMD [ "python", "./main.py" ]
+WORKDIR /code
+
+ADD . /code/
+
+COPY crontab /etc/cron.d/cjob
+
+RUN chmod 0644 /etc/cron.d/cjob
+
+ENV PYTHONUNBUFFERED 1
+
+ENV NUMBERS "4677,4693"
+
+CMD cron -f

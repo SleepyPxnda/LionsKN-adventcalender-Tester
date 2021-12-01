@@ -1,0 +1,2 @@
+*/1 * * * * root python3 /code/main.py >> /var/log/cron.log
+# Empty line
