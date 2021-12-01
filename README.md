@@ -2,8 +2,6 @@
 
 Small script to check if the numbers passed in the dockerfile won anything in the LionsKN Adventskalender 2021.
 
-Might add some cronjob to the dockerfile and change it to and ubuntu docker.
-
 ## Script
 
 Crawls the website https://lionskn-adventskalender.de/gewinnnummern/ with BeautifulSoup4.
@@ -19,7 +17,10 @@ To build the docker:
 To run it afterwards:
 ``docker run [name]``
 
-Since there is nothing special about this docker-container its simple as that
+To check the Logs of the docker
+
+Run ``docker ps`` to get the container id
+Then ``docker logs [id]`` to see the results of the cronjob
 
 ### Environmental Variables
 
