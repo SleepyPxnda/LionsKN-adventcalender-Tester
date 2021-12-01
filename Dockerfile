@@ -1,23 +1,19 @@
-FROM python:3
+FROM python:3-alpine
 
-RUN apt-get -y update && apt-get -y upgrade
-
-RUN apt-get install -y cron
-
-RUN touch /var/log/cron.log
-
+# ========== Configure Project ==========
 RUN mkdir /code
-
 WORKDIR /code
 
-ADD . /code/
-
-COPY crontab /etc/cron.d/cjob
-
-RUN chmod 0644 /etc/cron.d/cjob
-
-ENV PYTHONUNBUFFERED 1
+ADD . /code
 
 ENV NUMBERS "4677,4693"
 
-CMD cron -f
+RUN pip install -r requirements.txt
+# ========== CRON ==========
+# Configure cron
+COPY crontab /etc/cron/crontab
+
+# Init cron
+RUN crontab /etc/cron/crontab
+
+CMD ["crond", "-f"]
