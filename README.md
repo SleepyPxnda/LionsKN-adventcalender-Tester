@@ -14,7 +14,7 @@ Evaluates if you won something and prints it out.
 
 ## Docker
 To build the docker:
-``docker build -t [name]"``
+``docker build -t [name]``
 
 To run it afterwards:
 ``docker run [name]``
