@@ -1,6 +1,6 @@
 # LionskKN-adventcalender-Evaluator
 
-Small script to check if the numbers passed in the dockerfile won anything in the LionsKN Adventskalender 2021.
+Small script to check if the numbers passed in the dockerfile are linked with potential wins in the LionsKN Adventskalender 2021.
 
 ## Script
 
