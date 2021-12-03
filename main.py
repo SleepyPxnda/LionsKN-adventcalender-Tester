@@ -25,6 +25,7 @@ def main():
         win_list.append({"winner": winner, "sponsor": sponsor, "win": win})
 
     win_list.pop(0)
+    print(win_list)
 
     own_numbers = os.environ.get("NUMBERS").split(",")
     print("Registered Numbers: " + str(own_numbers))
